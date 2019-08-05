@@ -1,0 +1,22 @@
+language: generic
+sudo: requires
+services:
+  - docker
+before_install:
+  - docker buid -t clarags/react-test -f ./client/Dockerfile.dev ./client
+  # here i could add more test suits, in case i wanted to also test the api etc
+script:
+  - docker run -e CI=true USERNAME/react-test npm test -- --coverage
+  # here I could add more cmds to run
+after_success:
+  - docker build -t clarags/multi-client ./client 
+  - docker build -t clarags/multi-nginx ./nginx 
+  - docker build -t clarags/multi-server ./server 
+  - docker build -t clarags/multi-worker ./worker 
+  # Log in into docker CLI
+  - echo "$DOCKER_PSW" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take these images and push them to docker hub
+  - docker push clarags/multi-client
+  - docker push clarags/multi-nginx
+  - docker push clarags/multi-server
+  - docker push clarags/multi-worker
