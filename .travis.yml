@@ -22,14 +22,14 @@ after_success:
   - docker push clarags/multi-worker
 deploy:
   provider: elastickbeanstalk
-  region: eu-west-2
-  app: multi-docker
-  env: MultiDocker-env
-  bucker_name: MultiDocker-env.nmhxpftrvn.eu-west-2.elasticbeanstalk.com
-  bucker_path: multi-docker
+  region: "eu-west-2"
+  app: "multi-docker"
+  env: "MultiDocker-env"
+  bucker_name: "MultiDocker-env.nmhxpftrvn.eu-west-2.elasticbeanstalk.com"
+  bucker_path: "multi-docker"
   on:
     branch: master
-    access_key_id:
-      secure: $AWS_ACCESS_KEY
-    secret_access_key:
-      secure: $AWS_SECRET_KEY
+  access_key_id:
+    secure: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
