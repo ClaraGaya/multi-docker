@@ -21,7 +21,7 @@ after_success:
   - docker push clarags/multi-server
   - docker push clarags/multi-worker
 deploy:
-  provider: elastickbeanstalk
+  provider: elasticbeanstalk
   region: "eu-west-2"
   app: "multi-docker"
   env: "MultiDocker-env"
