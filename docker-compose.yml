@@ -24,11 +24,11 @@ services:
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
-      - PGUSER=postgres 
+      - PGUSER=claras 
       - PGHOST=postgres 
       - PGPORT=5432
-      - PGDATABASE=postgres 
-      - PGPASSWORD=postgres_password
+      - PGDATABASE=postgresdb
+      - PGPASSWORD=clara714715
   client:
       build:
         dockerfile: Dockerfile.dev
